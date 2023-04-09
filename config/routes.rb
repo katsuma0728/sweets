@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
   end
 
+
   namespace :admin do
     resources :genres, only: [:index, :new, :create, :edit, :update]
   end

@@ -24,3 +24,9 @@ ja:
         waiting_production: "制作待ち"
         under_construction: "制作中"
         finished: "制作完了"
+
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%m/%d %H:%M"

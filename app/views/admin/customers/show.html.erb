@@ -1,1 +1,15 @@
-<h1>Admin:顧客詳細</h1>
+<h1>
+  <span><%= @customer.last_name %><%= @customer.first_name %></span>さんの会員詳細
+</h1>
+
+<p><%= @customer.id %></p>
+<p><span><%= @customer.last_name %><%= @customer.first_name %></span></p>
+<p><span><%= @customer.last_name_kana %><%= @customer.first_name_kana %></span></p>
+<p><%= @customer.postal_code %></p>
+<p><%= @customer.address %></p>
+<p><%= @customer.telephone_number %></p>
+<p><%= @customer.email %></p>
+<p><%= @customer.is_deleted %></p>
+
+<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
+<%= link_to "注文一覧を見る", admin_orders_path 

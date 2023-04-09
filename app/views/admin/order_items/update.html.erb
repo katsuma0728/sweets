@@ -1,0 +1,64 @@
+<h2>注文履歴詳細</h2>
+
+<p>
+  <label>購入者</label>
+  <span><%= link_to @order_item.customer.last_name, admin_order_path(order.id) %><%= link_to @order_item.customer.first_name, admin_order_path(order.id) %></span>
+</p>
+<p>
+  <label>注文日</label>
+  <span><%= @order_item.order.created_at %></span>
+</p>
+<p>
+  <label>配送先</label>
+  <span><%= @order_item.order.shipping_postal_code %><%= @order_item.order.shipping_address %><%= @order_item.order.shipping_address %><%= @order_item.order.shipping_name %></span>
+</p>
+<p>
+  <label>支払方法</label>
+  <span><%= @order_item.order.payment_method %></span>
+</p>
+<p>
+  <label>注文ステータス</label>
+  <%= form_with model: @order_item.order_id, url: admin_order_item_path, method: :patch do |f| %>
+    <%= f.select :production_status %>
+    <%= f.submit '更新' %>
+  <% end %>
+
+<table class = "order_items">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @order_item.each do |order_item| %>
+        <td><%= order_item.item.name %></td>
+        <td><%= order_item.purchase_price %></td>
+        <td><%= order_item.amount %></td>
+        <td><%= order_item.purchase_price %>*<%= order_item.amount %></td>
+        <td><%= order_item.production_status %></td>
+        <td>
+          <%= form_with model: @order_item, url: admin_order_item_path, method: :patch do |f| %>
+            <%= submit '更新' %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+<p>
+  <label>商品合計</label>
+</p>
+<p>
+  <label>送料</label>
+  <span><%= @order_item.order.postage %></span>
+</p>
+<p>
+  <label>請求金額合計</label>
+  <span><%= @order_item.order.billing_amount %></span>
+</p>

@@ -1,20 +1,18 @@
-<h1>Admin:商品詳細</h1>
-<% if @item.image.attached? %>
-  <%= image_tag @item.image, size: "200x200" %>
-<% else %>
-  <%= image_tag 'no_image', size: "200x200" %>
-<% end %>
-
-<h4>商品名</h4>
-<p><%= @item.name %></p>
-<h4>商品説明</h4>
-<p><%= @item.introduction %></p>
-<h4>ジャンル</h4>
-<p><%= @item.genre_id %></p>
-<h4>税込価格（税抜価格）</h4>
-<p><%= @item.with_tax_price %></p>
-<p>(<%= @item.price %>)</p>
-<h4>販売ステータス</h4>
-<p><%= @item.is_active %></p>
-
-<%= link_to '編集する', edit_admin_item_path(@item.id) %>
+<div class = "container">
+    <div class="row mt-5">
+      <div class = "col-lg-12">
+        <h4 class = "d-flex p-2">商品詳細</h4>
+      </div>
+      <div class = "col-lg-4">
+        <%= image_tag @item.get_image(300,300) %>
+      </div>
+      <div class = "col-lg-8">
+        <label class = "col-lg-3">商品名</label><label class = "col-lg-5"><%= @item.name %></label></br>
+        <label class = "col-lg-3">商品説名</label><label class = "col-lg-5"><%= @item.introduction %></label></br>
+        <label class = "col-lg-3">ジャンル</label><label class = "col-lg-5"><%= @item.genre.name %></label></br>
+        <label class = "col-lg-3">税込価格</br>（税抜価格）</label><label class = "col-lg-5"><%= @item.with_tax_price %>(<%= @item.price %>)</label></br>
+        <label class = "col-lg-3">販売ステータス</label><label class = "col-lg-5"><%= @item.is_active %></label>
+      </div>
+      <div class = "mx-auto mt-5"><%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-success" %></div>
+    </div>
+</div>

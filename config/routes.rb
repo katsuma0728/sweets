@@ -8,8 +8,6 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  resources :items, only: [:index, :edit]
-
   devise_for :admin,skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
@@ -31,4 +29,27 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :new, :create, :edit, :update]
   end
 
+  scope module: :public do
+    resources :items, only: [:index, :edit]
+  end
+
+  scope module: :public do
+    resources :shipping_address, only: [:index, :edit]
+  end
+
+  scope module: :public do
+    resources :orders, only: [:new, :complete, :index, :show]
+  end
+
+  scope module: :public do
+    resources :items, only: [:index]
+  end
+
+  scope module: :public do
+    resources :customers, only: [:show, :edit, :unsubscribe]
+  end
+
+  scope module: :public do
+    resources :cart_items, only: [:index]
+  end
 end

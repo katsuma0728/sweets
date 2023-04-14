@@ -1,2 +1,42 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col">
+      <h2>会員情報編集</h2>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-lg-3">
+      <p>氏名</p>
+      <p>フリガナ</p>
+      <p>郵便番号</p>
+      <p>住所</p>
+      <p>電話番号</p>
+      <p>メールアドレス</p>
+    </div>
+    <div class = "col-lg-5">
+      <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
+      <p>
+        <span class = "mx-3"><%= f.text_field :last_name %></span><span><%= f.text_field :first_name %></span>
+      </p>
+      <p>
+        <span class = "mx-3"><%= f.text_field :last_name_kana %></span><span><%= f.text_field :first_name_kana %></span>
+      </p>
+      <p>
+        <span class = "mx-3"><%= f.text_field :postal_code %></span>
+      </p>
+      <p>
+        <span class = "mx-3"><%= f.text_field :address %></span>
+      </p>
+      <p>
+        <span class = "mx-3"><%= f.text_field :telephone_number %></span>
+      </p>
+      <p>
+        <span class = "mx-3"><%= f.text_field :email %></span>
+      </p>
+      <p>
+        <span><%= f.submit '変更を保存' , class: "btn btn-success" %></span>
+      </p>
+      <% end %>
+    </div>
+  </div>
+</div>

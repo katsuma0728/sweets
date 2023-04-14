@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :customers, only: [:show, :edit, :unsubscribe]
+    resources :customers, only: [:show, :edit, :unsubscribe, :update]
   end
 
   scope module: :public do

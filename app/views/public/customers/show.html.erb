@@ -6,6 +6,12 @@
   </div>
   <div class = "row">
     <div class = "col">
+      <span>登録情報</span>
+      <button class = ""><%= link_to "編集する", edit_customer_path(current_customer.id) %></button>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col">
       <table>
         <tr>
           <th>氏名</th><td><%= @customer.last_name %><%= @customer.first_name %></td>

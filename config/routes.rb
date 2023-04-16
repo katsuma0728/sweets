@@ -30,19 +30,15 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :items, only: [:index, :edit]
+    resources :addresses, only: [:index, :edit, :new, :create, :update, :destroy]
   end
 
   scope module: :public do
-    resources :shipping_address, only: [:index, :edit]
+    resources :orders, only: [:new, :index, :show]
   end
 
   scope module: :public do
-    resources :orders, only: [:new, :complete, :index, :show]
-  end
-
-  scope module: :public do
-    resources :items, only: [:index]
+    resources :items, only: [:index, :show]
   end
 
   scope module: :public do
@@ -52,6 +48,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :cart_items, only: [:index]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all_cart_items'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
   end
 end

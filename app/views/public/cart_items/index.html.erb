@@ -26,7 +26,7 @@
             <td><%= cart_item.item.with_tax_price %></td>
             <td>
               <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
-              <%= f.select :amount, *[1..3] %>
+              <%= f.select :amount, *[1..40] %>
               <%= f.submit '変更' %>
               <% end %>
             </td>

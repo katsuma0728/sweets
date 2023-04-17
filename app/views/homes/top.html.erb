@@ -22,9 +22,11 @@
       <div class = "new-items d-flex">
         <% @items.each do |item| %>
           <div class = "new-item mx-2" >
-            <p><%= image_tag item.get_image(200,200) %></p>
-            <p><%= item.name %></p>
-            <p><%= item.with_tax_price %></p>
+            <%= link_to item_path(item.id) do %>
+              <p><%= image_tag item.get_image(200,200) %></p>
+              <p><%= item.name %></p>
+              <p><%= item.with_tax_price %></p>
+            <% end %>
           </div>
         <% end %>
       </div>

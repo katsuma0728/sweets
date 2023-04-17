@@ -4,8 +4,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    order = Order.new(order_params)
-    order.save
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save
     redirect_to confirm_order_path(params[:id])
   end
 

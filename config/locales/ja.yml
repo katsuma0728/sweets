@@ -4,8 +4,6 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
-ja:
-  enums:
     order:
       shipping_address:
         me_address: "ご自身の住所"
@@ -20,20 +18,13 @@ ja:
         under_construction: "制作中"
         preparing_to_ship: "発送準備中"
         sent: "発送済み"
-
-
-ja:
-  enums:
     order_item:
       production_status:
         production_not: "制作不可"
         waiting_production: "制作待ち"
         under_construction: "制作中"
         finished: "制作完了"
-
-
-ja:
-  time:
-    formats:
-      default: "%Y/%m/%d %H:%M:%S"
-      short: "%m/%d %H:%M"
+    time:
+      formats:
+        default: "%Y/%m/%d %H:%M:%S"
+        short: "%m/%d %H:%M"

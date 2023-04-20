@@ -20,17 +20,27 @@ class Public::OrdersController < ApplicationController
       @order.shipping_postal_code = params[:order][:shipping_postal_code]
       @order.shipping_name = params[:order][:shipping_name]
     end
-    render :confirm
-    @order.customer_id = current_customer.id
-    @cart_items = CartItem.all(@order.customer_id)
-    @total = 0
-    @order.postage = 800
-    @order.billing_amount = @total + @order.postage
+      @cart_items = current_customer.cart_items
+      @total = 0
+      @order.postage = 800
+     render :confirm
   end
 
   def create
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     @order.save
+
+    current_cusutomer.cart_items.each do |cart_item|
+    @order_item = OrderItem.new
+    @order_item.item_id = cart_item.item_id
+    @order_item.order_id = @order.id
+    @order_item.purchase_price = cart_item.item.with_tax_price
+    @order_item.amount = cart_item.amount
+    @order_item.save
+  end
+
+    current_customer.cart_items.destroy_all
     redirect_to complete_path
   end
 

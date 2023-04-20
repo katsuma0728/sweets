@@ -4,26 +4,26 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
-    order:
+
       shipping_address:
         me_address: "ご自身の住所"
         registered_address: "登録済み住所から選択"
         new_delivery: "新しいお届け先"
-ja:
-  enums:
-    order:
+
       order_status:
         waiting_for_payment: "入金待ち"
         payment_confirmation: "入金確認"
         under_construction: "制作中"
         preparing_to_ship: "発送準備中"
         sent: "発送済み"
+
     order_item:
       production_status:
         production_not: "制作不可"
         waiting_production: "制作待ち"
         under_construction: "制作中"
         finished: "制作完了"
+
     time:
       formats:
         default: "%Y/%m/%d %H:%M:%S"

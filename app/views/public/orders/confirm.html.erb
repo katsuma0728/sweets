@@ -12,12 +12,12 @@
                 </thead>
                 <tbody>
                     <% @cart_items.each do |cart_item| %>
-                    <tr>
-                        <td><%= current_customer.cart_item.name %></td>
-                        <td><%= current_customer.cart_item.with_tax_price %></td>
-                        <td><%= current_customer.cart_item.amount %></td>
-                        <td><%= current_customer.cart_item.subtotal %><% @total += current_customer.cart_item.subtotal %></td>
-                    </tr>
+                        <tr>
+                            <td><%= cart_item.item.name %></td>
+                            <td><%= cart_item.item.with_tax_price %></td>
+                            <td><%= cart_item.amount %></td>
+                            <td><%= cart_item.subtotal %><% @total += cart_item.subtotal %></td>
+                        </tr>
                     <% end %>
                 </tbody>
             </table>
@@ -31,7 +31,9 @@
                     <th>商品合計</th><td><%= @total %></td>
                 </tr>
                 <tr>
-                    <th>請求金額</th><td><%= @order.billing_amount %></td>
+                    <th>請求金額</th>
+                     <% @order.billing_amount = @order.postage + @total %>
+                    <td><%= @order.billing_amount %></td>
                 </tr>
             </table>
         </div>

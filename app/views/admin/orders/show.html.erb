@@ -1,5 +1,5 @@
 <h1>
-  <span><%= @order.last_name %><%= @order.first_name %></span>さんの注文履歴
+  <span><%= @order.customer.last_name + @order.customer.first_name %></span>さんの注文履歴
 </h1>
 
 <table class = "orders">
@@ -12,9 +12,9 @@
   </thead>
   <tbody>
     <tr>
-      <% @orders.each do |order| %>
-        <td><%= link_to order.created_at, admin_order_item_path(order.id) %></td>
-        <td><%= order.amount %></td>
+      <% @order.each do |order| %>
+        <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
+        <td><%= order.order_items.amount %></td>
         <td><%= order.order_status %></td>
       <% end %>
     </tr>

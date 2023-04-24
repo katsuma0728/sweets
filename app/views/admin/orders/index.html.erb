@@ -17,8 +17,8 @@
             <tr>
               <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
               <td><%= link_to order.customer.last_name + order.customer.first_name, admin_order_path(order.id) %></td>
-              <td><%= order.order_items.amount %></td>
-              <td><%= order.order_status %></td>
+              <td><%= order.get_ordered_count(order.id) %></td>
+              <td><%= order.order_status_i18n %></td>
             </tr>
           <% end %>
         </tbody>

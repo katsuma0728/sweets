@@ -10,8 +10,14 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+     if params[:name]
+       @items = Item.where("name LIKE?","%#{params[:name]}%")
+    else
+      @items = Item.all
+    end
   end
+
+
 
   def show
     @item = Item.find(params[:id])

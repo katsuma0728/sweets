@@ -6,8 +6,11 @@
   </div>
   <div class = "row">
     <div class = "col-lg-2 border border-dark">
-      <p>ケーキ</p>
-      <p>キャンディ</p>
+      <% @genres.each do |genre| %>
+        <%= link_to items_path(genre_id: genre.id) do %>
+          <%= genre.name %></br>
+        <% end %>
+      <% end %>
     </div>
     <div class = "col-lg-5 offset-2 border border-dark p-3">
       ようこそ、ながのCAKEへ！</br>

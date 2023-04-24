@@ -6,5 +6,4 @@ class OrderItem < ApplicationRecord
   def subtotal
     purchase_price * amount
   end
-
 end

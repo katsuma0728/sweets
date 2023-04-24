@@ -10,7 +10,7 @@
         </tr>
         <tr>
           <th>配送先</th>
-          <td><%= @order.shipping_postal_code + @order.shipping_address + @order.shipping_name %></td>
+          <td><%= @order.order_shipping_display %></td>
         </tr>
         <tr>
           <th>支払方法</th>

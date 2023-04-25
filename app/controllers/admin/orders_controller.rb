@@ -1,6 +1,13 @@
 class Admin::OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    if params[:customer_id] && Order.find_by(customer_id: params[:customer_id])
+      @customer = Customer.find(params[:customer_id])
+      @orders = @customer.orders
+      @customer_flag = true
+    else
+      @customer_flag = false
+      @orders = Order.all
+    end
   end
 
   def show
@@ -12,9 +19,8 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
       if @order.update(order_params)
-        @order_items = @order.order_items
+         @order_items = @order.order_items
          @order_items.update_all(production_status: 1) if @order.order_status == "payment_confirmation"
-        ## ①注文ステータスが「入金確認」とき、製作ステータスを全て「製作待ち」に更新する
       end
     redirect_to admin_order_path(@order)
   end

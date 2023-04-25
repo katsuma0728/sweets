@@ -1,7 +1,7 @@
 class Public::ItemsController < ApplicationController
   def index
     @genres = Genre.all
-    
+
     if params[:name]
        @items = Item.where("name LIKE?","%#{params[:name]}%")
     elsif params[:genre_id]

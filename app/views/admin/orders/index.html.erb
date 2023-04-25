@@ -1,6 +1,12 @@
 <div class = "container">
   <div class="row mt-5">
-    <h4>注文履歴一覧</h4>
+    <h4>
+      <% if @customer_flag %>
+        <%= @customer.last_name + @customer.first_name %>さんの注文履歴一覧
+      <% else %>
+        <%= "注文履歴一覧" %>
+      <% end %>
+    </h4>
   </div>
    <div class="row  mt-5 justify-content-center ">
       <table class = "table table-striped">

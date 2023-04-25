@@ -9,7 +9,7 @@
 <p><%= @customer.address %></p>
 <p><%= @customer.telephone_number %></p>
 <p><%= @customer.email %></p>
-<p><%= @customer.is_deleted %></p>
+<p><%= @customer.is_deleted ? '退会' : '有効' %></p>
 
 <%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
-<%= link_to "注文一覧を見る", admin_order_item_path(@customer.id) %>
+<%= link_to "注文履歴一覧を見る", admin_orders_path(customer_id: @customer.id) %>

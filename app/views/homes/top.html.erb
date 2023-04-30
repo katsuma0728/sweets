@@ -28,7 +28,7 @@
             <%= link_to item_path(item.id) do %>
               <p><%= image_tag item.get_image(200,200) %></p>
               <p><%= item.name %></p>
-              <p><%= item.with_tax_price %></p>
+              <p>¥<%= item.with_tax_price %></p>
             <% end %>
           </div>
         <% end %>

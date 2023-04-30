@@ -1,8 +1,12 @@
-<div class = "container">
-    <div class = "row">
-        <div class = "col">
-            <h2>注文情報確認</h2>
-            <table>
+<div class = "container-fluid">
+    <div class = "row mt-5">
+        <div class = "col-lg-3">
+            <h5>注文情報確認</h5>
+        </div>
+    </div>
+    <div class= "row mt-3">
+        <div class = "col-lg-7">
+            <table class = "table table-bordered border-dark">
                 <thead>
                     <tr>
                         <th>商品名</th>
@@ -23,8 +27,8 @@
                 </tbody>
             </table>
         </div>
-        <div class = "col">
-            <table>
+        <div class = "col-lg-4">
+            <table class = "table table-bordered border-dark">
                 <tr>
                     <th>送料</th><td><%= @order.postage %></td>
                 </tr>
@@ -39,14 +43,18 @@
             </table>
         </div>
     </div>
-    <div class = "row">
+    <div class = "row mt-5">
         <div class = "col">
-            <h3>支払方法</h3><%= @order.payment_method_i18n %>
-            <h3>お届け先</h3><%= @order.shipping_postal_code + @order.shipping_address +  @order.shipping_name %>
+            <h5>支払方法</h5><%= @order.payment_method_i18n %>
         </div>
     </div>
-    <div class = "row">
+    <div class = "row mt-5">
         <div class = "col">
+            <h5>お届け先</h5><%= @order.order_shipping_display %>
+        </div>
+    </div>
+    <div class = "row mt-5">
+        <div class = "col-lg-3 offset-5">
             <%= form_with model: @order, url: orders_path, method: :post do |f| %>
                 <%= f.hidden_field :shipping_postal_code %>
                 <%= f.hidden_field :shipping_address %>

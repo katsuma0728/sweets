@@ -1,12 +1,14 @@
 <div class = "container">
   <div class="row mt-5">
-    <h4>
-      <% if @customer_flag %>
-        <%= @customer.last_name + @customer.first_name %>さんの注文履歴一覧
-      <% else %>
-        <%= "注文履歴一覧" %>
-      <% end %>
-    </h4>
+    <div class = "col-lg-2 text-white bg-dark text-center">
+      <h4>
+        <% if @customer_flag %>
+          <%= @customer.last_name + @customer.first_name %>さんの注文履歴一覧
+        <% else %>
+          <%= "注文履歴一覧" %>
+        <% end %>
+      </h4>
+    </div>
   </div>
    <div class="row  mt-5 justify-content-center ">
       <table class = "table table-striped">
@@ -21,13 +23,18 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
-              <td><%= link_to order.customer.last_name + order.customer.first_name, admin_order_path(order.id) %></td>
+              <td>
+                <%= link_to admin_order_path(order.id) do %>
+                  <%= l order.created_at %>
+                <% end %>
+              </td>
+              <td><%= order.customer.customer_name %></td>
               <td><%= order.get_ordered_count(order.id) %></td>
               <td><%= order.order_status_i18n %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+    <%= paginate @orders %>
   </div>
 </div>

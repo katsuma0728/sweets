@@ -16,6 +16,7 @@ class Order < ApplicationRecord
   end
 
   def order_shipping_display
-    self.shipping_postal_code + '  ' + self.shipping_address +  '  ' + self.shipping_name
+    '〒' + self.shipping_postal_code + ' ' + self.shipping_address + ' ' + self.shipping_name
   end
+  
 end

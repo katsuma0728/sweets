@@ -1,6 +1,6 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    @customers = Customer.all.page(params[:page])
   end
 
   def show
@@ -20,6 +20,6 @@ class Admin::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:id, :last_name, :first_name, :last_name_kane, :first_name_kana, :emai, :postal_code, :address, :telephone_number, :is_deleted)
+    params.require(:customer).permit(:id, :last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telephone_number, :is_deleted)
   end
 end

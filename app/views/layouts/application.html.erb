@@ -12,9 +12,9 @@
 
   <body>
     <header class = "sticky-top">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">Sweets</a>
+          <a class="navbar-brand text-white" href="/">Sweets</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -23,97 +23,89 @@
             <% if admin_signed_in? %>
               <li class = "nav-item mx-3">
                 <%= link_to admin_items_path do %>
-                  <button class="btn btn-outline-success me-2" type="button">商品一覧</button>
+                  <button class="btn btn-secondary me-2" type="button">商品一覧</button>
                 <% end %>
               </li>
               <li class = "nav-item mx-3">
                 <%= link_to admin_customers_path do %>
-                  <button class="btn btn-outline-success me-2" type="button">会員一覧</button>
+                  <button class="btn btn-secondary me-2" type="button">会員一覧</button>
                 <% end %>
               </li>
               <li class = "nav-item mx-3">
                 <%= link_to admin_orders_path do %>
-                  <button class="btn btn-outline-success me-2" type="button">注文履歴一覧</button>
+                  <button class="btn btn-secondary me-2" type="button">注文履歴一覧</button>
                 <% end %>
               </li>
               <li class = "nav-item mx-3">
                 <%= link_to admin_genres_path do %>
-                  <button class="btn btn-outline-success me-2" type="button">ジャンル一覧</button>
+                  <button class="btn btn-secondary me-2" type="button">ジャンル一覧</button>
                 <% end %>
               </li>
               <li class = "nav-item mx-3">
                 <%= link_to destroy_admin_session_path, method: :delete do %>
-                  <button class="btn btn-outline-success me-2" type="button">ログアウト</button>
+                  <button class="btn btn-secondary me-2" type="button">ログアウト</button>
                 <% end %>
               </li>
-              <li>
-                <%= form_with url: admin_items_path, method: :get do |f| %>
-                  <%= f.text_field :name, placeholder: "キーワードを入力" %>
-                  <%= f.submit "検索" %>
-                <% end %>
-              </li>
-              <% elsif customer_signed_in? %>
+            <% elsif customer_signed_in? %>
               <li class = "nav-item mx-3">
                 <%= link_to customer_path(current_customer.id) do %>
-                  <button class="btn btn-outline-success me-2" type="button">マイページ</button>
+                  <button class="btn btn-secondary me-2" type="button">マイページ</button>
                 <% end %>
               </li>
               <li class = "nav-item mx-3">
                 <%= link_to items_path do %>
-                  <button class="btn btn-outline-success me-2" type="button">商品一覧</button>
+                  <button class="btn btn-secondary me-2" type="button">商品一覧</button>
                 <% end %>
               </li>
               <li class = "nav-item mx-3">
                 <%= link_to cart_items_path do %>
-                  <button class="btn btn-outline-success me-2" type="button">カート</button>
+                  <button class="btn btn-secondary me-2" type="button">カート</button>
                 <% end %>
               </li>
               <li class = "nav-item mx-3">
                 <%= link_to destroy_customer_session_path, method: :delete do %>
-                  <button class="btn btn-outline-success me-2" type="button">ログアウト</button>
-                <% end %>
-              </li>
-              <li>
-               <%= form_with url: items_path, method: :get do |f| %>
-                  <%= f.text_field :name, placeholder: "キーワードを入力" %>
-                  <%= f.submit "検索" %>
+                  <button class="btn btn-secondary me-2" type="button">ログアウト</button>
                 <% end %>
               </li>
             <% else %>
               <li class = "nav-item mx-3">
                 <%= link_to about_path do %>
-                  <button class="btn btn-outline-success me-2" type="button">About</button>
+                  <button class="btn btn-secondary me-2" type="button">About</button>
                 <% end %>
               </li>
               <li class = "nav-item mx-3">
                 <%= link_to items_path do %>
-                  <button class="btn btn-outline-success me-2" type="button">商品一覧</button>
+                  <button class="btn btn-secondary me-2" type="button">商品一覧</button>
                 <% end %>
               </li>
               <li class = "nav-item">
                 <%= link_to new_customer_registration_path do %>
-                  <button class="btn btn-outline-success me-2" type="button">新規登録</button>
+                  <button class="btn btn-secondary me-2" type="button">新規登録</button>
                 <% end %>
               </li>
               <li class = "nav-item mx-3">
                 <%= link_to new_customer_session_path do %>
-                  <button class="btn btn-outline-success me-2" type="button">ログイン</button>
-                <% end %>
-              </li>
-              <li>
-               <%= form_with url: items_path, method: :get do |f| %>
-                  <%= f.text_field :name, placeholder: "キーワードを入力" %>
-                  <%= f.submit "検索" %>
+                  <button class="btn btn-secondary me-2" type="button">ログイン</button>
                 <% end %>
               </li>
             <% end %>
             </ul>
+            <form class="d-flex">
+              <% if admin_signed_in? %>
+                <%= form_with url: admin_items_path, method: :get do |f| %>
+                  <%= f.text_field :name, placeholder: "キーワードを入力" %>
+                  <%= f.submit "検索", class: "btn btn-success" %>
+                <% end %>
+              <% else %>
+                <%= form_with url: items_path, method: :get do |f| %>
+                  <%= f.text_field :name, placeholder: "キーワードを入力" %>
+                  <%= f.submit "検索", class: "btn btn-success" %>
+                <% end %>
+              <% end %>
+            </form>
           </div>
-         </div>
-        </nav>
-        <div class="text-bottom row bg-light">
-
         </div>
+      </nav>
     </header>
     <main>
       <%= yield %>
@@ -122,7 +114,7 @@
       <div class="container">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <h1>ながのCAKE</h1>
+            <h4>Naganocake</h4>
           </div>
         </div>
       </div>

@@ -1,25 +1,33 @@
 <div class = "container">
-  <div cass = "row">
-    <div class = "col">
-      <h2>配送先登録/一覧</h2>
+  <div class = "row mt-5">
+    <div class = "col-lg-3">
+      <h5>配送先登録/一覧</h5>
     </div>
   </div>
-  <div class = "row">
-    <div class = "col">
-      <%= form_with model: @address, url: addresses_path do |f| %>
-      <h4>郵便番号（ハイフンなし）</h4>
-      <%= f.text_field :postal_code %>
-      <h4>住所</h4>
-      <%= f.text_field :address %>
-      <h4>宛名</h4>
-      <%= f.text_field :name %>
-      <%= f.submit '新規登録', class: "btn btn-success" %>
-      <% end %>
+  <div class = "row mt-3">
+    <div class = "col-lg-8">
+      <table cellpadding = 10>
+        <%= form_with model: @address, url: addresses_path do |f| %>
+          <tr>
+            <th><%= f.label :postal_code, '郵便番号(ハイフンなし)' %></th>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :address, '住所' %></th>
+            <td><%= f.text_field :address %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :name, '宛名' %></th>
+            <td><%= f.text_field :name %></td>
+            <td><%= f.submit '新規登録', class: "btn btn-success" %></td>
+          </tr>
+        <% end %>
+      </table>
     </div>
   </div>
-  <div class = "row">
-    <div class = "col">
-      <table>
+  <div class = "row mt-3">
+    <div class = "col-lg-10">
+      <table class = "table-bordered border-dark">
         <thead>
           <tr>
             <th>郵便番号</th>
@@ -35,8 +43,8 @@
               <td><%= address.address %></td>
               <td><%= address.name %></td>
               <td>
-                <%= link_to '編集する', edit_address_path(address.id) %>
-                <%= link_to '削除する', address_path(address.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                <%= link_to '編集する', edit_address_path(address.id), class: "btn btn-success" %>
+                <%= link_to '削除する', address_path(address.id), method: :delete, class: "btn btn-danger" %>
               </td>
             </tr>
             <% end %>

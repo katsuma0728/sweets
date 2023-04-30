@@ -1,13 +1,15 @@
 <div class = "container">
   <div class="row mt-5">
-    <h4>ジャンル一覧・追加</h4>
+    <div class = "col-lg-3 text-white bg-dark text-center">
+      <h4>ジャンル一覧・追加</h4>
     </div>
-    <div class="row mt-2">
-  <%= form_with model: @genre, url: admin_genres_path do |f| %>
-    <label>ジャンル名</label>
-    <%= f.text_field :name %>
-    <%= f.submit '新規登録', class: "btn btn-success" %>
-  <% end %>
+  </div>
+  <div class="row mt-5">
+    <%= form_with model: @genre, url: admin_genres_path do |f| %>
+      <%= f.label :name, "ジャンル名" %>
+      <%= f.text_field :name %>
+      <%= f.submit '新規登録', class: "btn btn-success" %>
+    <% end %>
   </div>
 
 <div class="row mt-5">

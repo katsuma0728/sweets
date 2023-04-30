@@ -2,11 +2,11 @@ class Admin::OrdersController < ApplicationController
   def index
     if params[:customer_id] && Order.find_by(customer_id: params[:customer_id])
       @customer = Customer.find(params[:customer_id])
-      @orders = @customer.orders
+      @orders = @customer.orders.page(params[:page])
       @customer_flag = true
     else
       @customer_flag = false
-      @orders = Order.all
+      @orders = Order.all.page(params[:page])
     end
   end
 

@@ -1,6 +1,8 @@
 <div class = "container">
   <div class="row mt-5">
-    <h4>会員一覧</h4>
+    <div class = "col-lg-2 text-white bg-dark text-center">
+      <h4>会員一覧</h4>
+    </div>
   </div>
   <div class="row  mt-5 justify-content-center ">
     <table class = "table table-striped">
@@ -16,17 +18,14 @@
         <% @customers.each do |customer| %>
           <tr>
             <td><%= customer.id %></td>
-            <td>
-              <%= link_to customer.last_name, admin_customer_path(customer.id) %>
-              <%= link_to customer.first_name, admin_customer_path(customer.id) %>
-            </td>
+            <td><%= link_to customer.customer_name, admin_customer_path(customer.id) %></td>
             <td><%= customer.email %></td>
             <td><%= customer.is_deleted ? '退会' : '有効' %></td>
-
           </tr>
         <% end %>
       </tbody>
     </table>
+    <%= paginate @customers %>
   </div>
 </div>
 

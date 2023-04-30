@@ -1,29 +1,30 @@
-<div class = "container">
-  <div class = "row">
-    <div class = "col">
-      <h2>商品一覧</h2>
+<div class = "container-fluid">
+  <div class = "row mt-5">
+    <div class = "col-lg-3 offset-lg-1 text-white bg-dark text-center">
+      <h4>
+        <% if @genre_flag %>
+          <%= "#{@genre.name}一覧(全#{@items_count}件)" %>
+        <% else %>
+          <%= "商品一覧(全#{@items_count}件)"%>
+        <% end %>
+      </h4>
     </div>
   </div>
-  <div class = "row">
-    <div class = "col-lg-2 border border-dark">
-      <% @genres.each do |genre| %>
-        <%= link_to items_path(genre_id: genre.id) do %>
-          <%= genre.name %></br>
+  <div class = "row justify-content-center mt-5">
+    <div class = "col-lg-2 offset-lg-1 border border-dark">
+      <%= render 'genre_search', genres: @genres %>
+    </div>
+    <div class = "col-lg-8  offset-1 d-flex flex-lg-wrap">
+      <% @items.each do |item| %>
+        <%= link_to item_path(item.id) do %>
+          <div class = "item mx-2">
+            <p><%= image_tag item.get_image(200,200) %></p>
+            <p><%= item.name %></p>
+            <p>¥<%= item.with_tax_price %></p>
+          </div>
         <% end %>
       <% end %>
     </div>
-    <div class = "col">
-      <div class = "d-flex">
-          <% @items.each do |item| %>
-            <%= link_to item_path(item.id) do %>
-              <div class = "item mx-2">
-                <p><%= image_tag item.get_image(200,200) %></p>
-                <p><%= item.name %></p>
-                <p><%= item.with_tax_price %></p>
-              </div>
-            <% end %>
-          <% end %>
-      </div>
-    </div>
+    <%= paginate @items %>
   </div>
 </div>

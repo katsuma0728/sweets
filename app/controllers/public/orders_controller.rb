@@ -14,8 +14,7 @@ class Public::OrdersController < ApplicationController
       @order.shipping_address = @address.address
       @order.shipping_postal_code = @address.postal_code
       @order.shipping_name = @address.name
-    elsif params[:order][:address_number] = "2"
-      @address = Address.new
+    else params[:order][:address_number] = "2"
       @order.shipping_address = params[:order][:shipping_address]
       @order.shipping_postal_code = params[:order][:shipping_postal_code]
       @order.shipping_name = params[:order][:shipping_name]
@@ -61,6 +60,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit( :id, :cutomer_id, :shipping_postal_code, :shipping_address, :shipping_name, :payment_method, :billing_amount, :postage, :order_status)
+    params.require(:order).permit( :id, :customer_id, :shipping_postal_code, :shipping_address, :shipping_name, :payment_method, :billing_amount, :postage, :order_status)
   end
 end

@@ -1,13 +1,13 @@
 <div class = "container">
   <div class = "row mt-5">
-    <div class = "col-lg-3">
+    <div class = "col-lg-4">
       <h4>注文履歴詳細</h4>
     </div>
   </div>
   <div class = "row mt-5">
-    <div class = "col-lg-6">
+    <div class = "col-lg-6 offset-2">
       <h5>注文情報</h5>
-      <table class = "table-bordered border-dark">
+      <table cellpadding = 10 border= 3>
         <tr>
           <th>注文日</th>
           <td><%= l @order.created_at, format: :short %></td>
@@ -26,24 +26,11 @@
         </tr>
       </table>
     </div>
-    <div class = "col-lg-4">
-      <h5>請求情報</h5>
-      <table class = "table-bordered border-dark">
-        <tr>
-          <th>商品合計</th><td><%= @total %></td>
-        </tr>
-        <tr>
-          <th>配送料</th><td><%= @order.postage %></td>
-        </tr>
-        <tr>
-          <th>ご請求金額</th><td><%= @order.billing_amount %></td>
-        </tr>
-      </table>
-    </div>
   </div>
   <div class = "row mt-5">
-    <div class = "col">
-      <table class = "table-bordered border-dark">
+    <div class = "col-lg-5 offset-2">
+      <h5>注文内容</h5>
+      <table cellpadding = 10 border= 3>
         <thead>
           <tr>
             <th>商品</th>
@@ -62,6 +49,20 @@
             </tr>
           <% end %>
         </tbody>
+      </table>
+    </div>
+    <div class = "col-lg-4">
+      <h5>請求情報</h5>
+      <table cellpadding = 10 border= 3>
+        <tr>
+          <th>商品合計</th><td><%= @total %></td>
+        </tr>
+        <tr>
+          <th>配送料</th><td><%= @order.postage %></td>
+        </tr>
+        <tr>
+          <th>ご請求金額</th><td><%= @order.billing_amount %></td>
+        </tr>
       </table>
     </div>
   </div>

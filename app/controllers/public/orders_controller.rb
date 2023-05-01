@@ -5,16 +5,16 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    if params[:order][:address_number] = "0"
+    if params[:order][:address_number] == "0"
       @order.shipping_address = current_customer.address
       @order.shipping_postal_code = current_customer.postal_code
       @order.shipping_name = current_customer.last_name + current_customer.first_name
-    elsif params[:order][:address_number] = "1"
+    elsif params[:order][:address_number] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.shipping_address = @address.address
       @order.shipping_postal_code = @address.postal_code
       @order.shipping_name = @address.name
-    else params[:order][:address_number] = "2"
+    else params[:order][:address_number] == "2"
       @order.shipping_address = params[:order][:shipping_address]
       @order.shipping_postal_code = params[:order][:shipping_postal_code]
       @order.shipping_name = params[:order][:shipping_name]

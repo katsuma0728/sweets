@@ -19,7 +19,7 @@
 
         <%= f.radio_button :address_number, "1"%>
         <%= f.label :address_number, "登録済み住所から選択" %></br>
-        <%= f.select :address_id, options_from_collection_for_select(Address.all, :id , :address_display) %></br>
+        <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id , :address_display) %></br>
 
         <%= f.radio_button :address_number, "2" %>
         <%= f.label :address_number, "新しいお届け先" %></br>
@@ -37,12 +37,12 @@
         <td><%= f.text_field :shipping_name %></td>
       </tr>
     </table>
+    <div class = "row mt-5">
+      <div class = "col-lg-3 offset-3">
+          <%= f.submit '確認画面へ進む', class: "btn btn-primary"%>
+      </div>
     </div>
-  </div>
-  <div class = "row mt-5">
-    <div class = "col-lg-3 offset-3">
-        <%= f.submit '確認画面へ進む', class: "btn btn-primary"%>
-      <% end %>
+     <% end %>
     </div>
   </div>
 </div>

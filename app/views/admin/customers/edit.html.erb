@@ -1,4 +1,12 @@
 <div class = "container">
+  <% if @customer.errors.any? %>
+    <%= @customer.errors.count %>件の未入力があります
+    <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class = "row mt-5">
     <div class = "col-lg-6 text-white bg-dark text-center">
       <h5><%= @customer.customer_name %>さんの会員情報編集</h5>

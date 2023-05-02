@@ -8,7 +8,7 @@
     <div class = "col-lg-6">
       <table cellpadding = 5>
         <tr>
-          <th>購入者</th><td><%= link_to @order.customer.customer_name, admin_customer_path(@order.id) %></td>
+          <th>購入者</th><td><%= link_to @order.customer.customer_name, admin_customer_path(@order.customer.id) %></td>
         </tr>
         <tr>
           <th>注文日</th><td><%= l @order.created_at, format: :short %></td>

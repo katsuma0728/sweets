@@ -1,4 +1,12 @@
 <div class = "container">
+  <% if @item.errors.any? %>
+  <%= @item.errors.count %>件の未入力があります
+    <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class = "row mt-5">
     <h4 class = "col-lg-2 text-white bg-dark text-center">商品編集</h4>
   </div>
@@ -17,13 +25,13 @@
               <th>商品説明</th><td><%= f.text_area :introduction %></td>
             </tr>
             <tr>
-              <th>ジャンル</th><td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: "--選択してください--" %></td>
+              <th>ジャンル</th><td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name, @item.genre_id) %></td>
             </tr>
             <tr>
               <th>税抜価格</th><td><%= f.text_field :price %>円</td>
             </tr>
             <tr>
-              <th>販売ステータス</th><td><%= f.label :is_active, '販売中', value: 1 %><%= f.radio_button :is_active, '1' %><%= f.label :is_active, '販売停止中', value: 0 %><%= f.radio_button :is_active, '0' %></td>
+              <th>販売ステータス</th><td><%= f.label :is_active, '販売中', value: true %><%= f.radio_button :is_active, true %><%= f.label :is_active, '販売停止中', value: false %><%= f.radio_button :is_active, false %></td>
             </tr>
             <tr>
               <th></th><td><%= f.submit '変更を保存', class: "btn btn-success" %></td>

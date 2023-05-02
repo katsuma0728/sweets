@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
   before_action :check_cart_items, only: [:create]
 
   def create

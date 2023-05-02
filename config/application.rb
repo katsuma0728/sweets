@@ -21,5 +21,6 @@ module Sweets
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.time_zone = 'Asia/Tokyo'
+    #config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end

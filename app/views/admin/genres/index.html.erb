@@ -1,4 +1,12 @@
 <div class = "container">
+  <% if @genre.errors.any? %>
+  <%= @genre.errors.count %>件の未入力があります
+    <ul>
+      <% @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class="row mt-5">
     <div class = "col-lg-3 text-white bg-dark text-center">
       <h4>ジャンル一覧・追加</h4>
@@ -30,7 +38,7 @@
                 <%= genre.name %>
               </td>
               <td>
-                <button class = "btn btn-success"><%= link_to '編集する', edit_admin_genre_path(genre.id) %></button>
+                <%= link_to '編集する', edit_admin_genre_path(genre.id), class: "btn btn-success" %>
               </td>
             </tr>
            <% end %>

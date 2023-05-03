@@ -6,8 +6,8 @@ class Public::ItemsController < ApplicationController
        @items = Item.where("name LIKE?","%#{params[:name]}%").page(params[:page]).per(8)
     elsif params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @items = @genre.items.page(params[:page]).per(8)
-      @items_count = @items.count
+      @items = @genre.items.all.page(params[:page]).per(8)
+      @genre_items_count = @genre.items.all.count
       @genre_flag = true
     else
       @genre_flag = false

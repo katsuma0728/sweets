@@ -1,6 +1,6 @@
 <div class = "container">
   <div class="row mt-5">
-    <div class = "col-lg-2 text-white bg-dark text-center">
+    <div class = "col-lg-6 text-white bg-dark text-center">
       <h4>
         <% if @customer_flag %>
           <%= @customer.last_name + @customer.first_name %>さんの注文履歴一覧
@@ -10,7 +10,7 @@
       </h4>
     </div>
   </div>
-   <div class="row  mt-5 justify-content-center ">
+   <div class="row  mt-3 justify-content-center ">
       <table class = "table table-striped">
         <thead>
           <tr>

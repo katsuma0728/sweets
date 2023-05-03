@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :genres, only: [:index, :new, :create, :edit, :update]
+    resources :genres, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
   scope module: :public do

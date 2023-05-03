@@ -1,16 +1,16 @@
 <div class = "container-fluid">
-  <div class = "row mt-5">
+  <div class = "row mt-4">
     <div class = "col-lg-3 offset-lg-1 text-white bg-dark text-center">
       <h4>
         <% if @genre_flag %>
-          <%= "#{@genre.name}一覧(全#{@items_count}件)" %>
+          <%= "#{@genre.name}一覧(全#{@genre_items_count}件)" %>
         <% else %>
           <%= "商品一覧(全#{@items_count}件)"%>
         <% end %>
       </h4>
     </div>
   </div>
-  <div class = "row justify-content-center mt-5">
+  <div class = "row justify-content-center mt-4">
     <div class = "col-lg-2 offset-lg-1 border border-dark">
       <%= render 'genre_search', genres: @genres %>
     </div>
@@ -25,6 +25,10 @@
         <% end %>
       <% end %>
     </div>
-    <%= paginate @items %>
+  </div>
+  <div class = "row mt-3">
+    <div class = "col offset-6">
+      <%= paginate @items %>
+    </div>
   </div>
 </div>

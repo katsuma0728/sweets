@@ -28,6 +28,7 @@
           <th></th>
           <th>ジャンル</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -39,6 +40,9 @@
               </td>
               <td>
                 <%= link_to '編集する', edit_admin_genre_path(genre.id), class: "btn btn-success" %>
+              </td>
+              <td>
+                <%= link_to '削除する', admin_genre_path(genre.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
               </td>
             </tr>
            <% end %>
